@@ -102,17 +102,7 @@ const promptUser = () => {
   ]);
 };
 
-const lscChoice = ({license}) => {
-  if (license === Apache) {
-    return liscApache
-  }
-
-  else if (license === GNUv3) {
-    return liscGNU
-  }
-
-  else {return liscMIT}
-}
+let lscChoice = liscMIT
 
 const generateReadme = ({ name, title, description, installation, usage, contribution, test, github, email }) =>
   `# ${title}
@@ -134,6 +124,7 @@ const generateReadme = ({ name, title, description, installation, usage, contrib
   ---
   ## Installation
   ${installation}
+
   ---
   ## Usage
   ${usage}
@@ -142,7 +133,8 @@ const generateReadme = ({ name, title, description, installation, usage, contrib
   ## License
   
   Copyright (C) ${thisyear}  ${name}
-  ${lscChoice.value}
+
+  ${liscMIT}
   
   ---
   ## How to Contribute
@@ -163,9 +155,7 @@ const generateReadme = ({ name, title, description, installation, usage, contrib
 
 const init = () => {
   promptUser()
-    // Use writeFileSync method to use promises instead of a callback function
-    // .then((answers) => lscChoice(answers))
-    .then((answers) => fs.writeFileSync('readmetest.md', generateReadme(answers)))
+    .then((answers) => fs.writeFileSync('readme.md', generateReadme(answers)))
     .then(() => console.log('Successfully wrote to readmetest.mdl'))
     .catch((err) => console.error(err));
 };
