@@ -1,8 +1,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const thisyear = Date.prototype.getFullYear()
+const thisyear = new Date().getFullYear();
 
-liscMIT = `Permission is hereby granted, free of charge, to any person obtaining a copy
+const liscMIT = `Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
@@ -20,7 +20,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.`
 
-liscGNU = `
+const liscGNU = `
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
@@ -34,7 +34,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.`
 
-liscApache = ` Licensed under the Apache License, Version 2.0 (the "License");
+const liscApache = ` Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
@@ -52,7 +52,7 @@ const promptUser = () => {
       type: 'input',
       name: 'name',
       message: 'What is your full name?'
-    }
+    },
     {
       type: 'input',
       name: 'title',
@@ -62,6 +62,11 @@ const promptUser = () => {
       type: 'input',
       name: 'description',
       message: 'How would you describe your project?'
+    },
+    {
+      type: 'input',
+      name: 'installation',
+      message: 'Please provide instructions how to install this project.'
     },
     {
       type: 'input',
@@ -77,11 +82,11 @@ const promptUser = () => {
       type: 'list',
       name: 'license',
       message: 'Which license would you like to use for your project?',
-      choices: [Apache, MIT, GNUv3]
+      choices: ["Apache", "MIT", "GNUv3"]
     },
     {
       type: 'input',
-      name: 'tests',
+      name: 'test',
       message: 'Please provide instructions tests that could be run.'
     },
     {
@@ -128,7 +133,6 @@ const generateReadme = ({ name, title, description, installation, usage, contrib
 
   ---
   ## Installation
-  
   ${installation}
   ---
   ## Usage
@@ -138,8 +142,7 @@ const generateReadme = ({ name, title, description, installation, usage, contrib
   ## License
   
   Copyright (C) ${thisyear}  ${name}
-
-  ${lscChoice}
+  ${lscChoice.value}
   
   ---
   ## How to Contribute
@@ -161,7 +164,7 @@ const generateReadme = ({ name, title, description, installation, usage, contrib
 const init = () => {
   promptUser()
     // Use writeFileSync method to use promises instead of a callback function
-    .then((answers) => lscChoice)
+    // .then((answers) => lscChoice(answers))
     .then((answers) => fs.writeFileSync('readmetest.md', generateReadme(answers)))
     .then(() => console.log('Successfully wrote to readmetest.mdl'))
     .catch((err) => console.error(err));
