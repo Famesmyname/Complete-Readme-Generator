@@ -129,13 +129,7 @@ const generateReadme = ({ name, title, description, installation, usage, contrib
   ## Usage
   ${usage}
 
-  ---
-  ## License
-  
-  Copyright (C) ${thisyear}  ${name}
 
-  ${liscMIT}
-  
   ---
   ## How to Contribute
   ${contribution}
@@ -149,6 +143,14 @@ const generateReadme = ({ name, title, description, installation, usage, contrib
 
   Please send any questions by email to ${email}.
   Github https://github.com/${github}.
+
+  ---
+  ## License
+  
+  Copyright (C) ${thisyear}  ${name}
+
+  ${liscMIT}
+  
 `;
 
 
