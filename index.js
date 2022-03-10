@@ -131,7 +131,7 @@ const generateReadme = ({ name, title, description, installation, usage, contrib
 
 
   ---
-  ## How to Contribute
+  ## Contributions
   ${contribution}
 
   ---
