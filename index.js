@@ -157,8 +157,8 @@ const generateReadme = ({ name, title, description, installation, usage, contrib
 
 const init = () => {
   promptUser()
-    .then((answers) => fs.writeFileSync('readme.md', generateReadme(answers)))
-    .then(() => console.log('Successfully wrote to readmetest.mdl'))
+    .then((answers) => fs.writeFileSync('/Generated Readme/readme.md', generateReadme(answers)))
+    .then(() => console.log('Successfully wrote to /Generated Readme/readme.md'))
     .catch((err) => console.error(err));
 };
 
