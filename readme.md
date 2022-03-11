@@ -22,7 +22,7 @@
   ## Usage
   Once the app has started, the user will be immediately asked a series of questions in order to populate the soon to be generated readme file with all necessary information as seen below:
 
-![Terminal Screenshot](./images/readme-generator-screenshot-01.png)
+![Terminal Screenshot](./Images/readme-generator-screenshot-01.png)
 
   After all the questions have been answered, a readme.md markdown file will be generated in the generated-readme folder.
 
