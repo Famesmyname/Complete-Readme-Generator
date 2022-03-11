@@ -2,6 +2,8 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const thisyear = new Date().getFullYear();
 
+
+// The licenses to be used.
 const liscMIT = `Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -46,6 +48,17 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.`
 
+let lscChoice = (answers) => {
+  if (answers.license === 'MIT'){
+    lscChoice = liscMIT}
+  else if (answers.license === 'Apache'){
+    lscChoice = liscApache}
+  else if (answers.liscence === "GNUv3"){
+    lscChoice = liscGNU
+  }
+};
+
+// This is the inquirer questions asked of the user when app is initiallized.
 const promptUser = () => {
   return inquirer.prompt([
     {
@@ -102,7 +115,8 @@ const promptUser = () => {
   ]);
 };
 
-let lscChoice = liscMIT
+
+// This is the readme layout below using the answers from the inquirer as variables.
 
 const generateReadme = ({ name, title, description, installation, usage, contribution, test, github, email }) =>
   `# ${title}
@@ -153,12 +167,11 @@ const generateReadme = ({ name, title, description, installation, usage, contrib
   
 `;
 
-
-
+// This is the application initialization where the user is asked a series of questions then it is written via the generateReadme which uses the answers to generate readme.
 const init = () => {
   promptUser()
-    .then((answers) => fs.writeFileSync('/Generated Readme/readme.md', generateReadme(answers)))
-    .then(() => console.log('Successfully wrote to /Generated Readme/readme.md'))
+    .then((answers) => fs.writeFileSync('./Generated-Readme/readme.md', generateReadme(answers)))
+    .then(() => console.log('Successfully wrote to /Generated-Readme/readme.md'))
     .catch((err) => console.error(err));
 };
 

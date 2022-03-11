@@ -1,8 +1,8 @@
-# Complete Readme Generator
+# Sample Demo Readme
   
   ## Description
   
-  This app was created to generate high quality readme markdown files. It is useful as a quick way to generate a complete readme quickly or to use as a starting point without having to create a readme and its sections from scratch.
+  This is a sample readme for demonstration.
 
   ---
   ## Table of Contents 
@@ -16,19 +16,20 @@
 
   ---
   ## Installation
-  To install the project simply download the project from and open a commmand line interface of your choice. Run the app with by typing npm start(if npm is installed) or node index.js into the commind line.
+  run node index.js in command line
 
   ---
   ## Usage
-  Once the app has started, the user will be immediately asked a series of questions in order to populate the soon to be generated readme file with all necessary information as seen below:
+  Answer questions then find the readme in the genereated-readme folder.
 
-![Terminal Screenshot](./images/readme-generator-screenshot-01.png)
-
-  After all the questions have been answered, a readme.md markdown file will be generated in the generated-readme folder.
 
   ---
-  ## How to Contribute
-  Please contact by e-mail or on github to contribute to this project. Both information is given below.
+  ## Contributions
+  Contact information is below, please contact me.
+
+  ---
+  ## Test
+  Run tests on the readme markdown generator and templates.
 
   ---
   ## Questions 
