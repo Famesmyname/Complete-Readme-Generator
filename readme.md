@@ -26,6 +26,10 @@
 
   After all the questions have been answered, a readme.md markdown file will be generated in the generated-readme folder.
 
+  A video demonstration of the app's functionality and usage can be accessed in the link below:
+  https://youtu.be/xD13X46eqIU.
+  
+
   ---
   ## How to Contribute
   Please contact by e-mail or on github to contribute to this project. Both information is given below.
