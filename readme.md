@@ -40,6 +40,11 @@
   Please send any questions by email to edwinfame@yahoo.com.
   Github https://github.com/famesmyname.
 
+  ## Version
+  1.00    Deployed Version to Git
+  1.01    Generated readme no longer created in a separate folder but uses the title in the file name.
+  1.02    Fixed license badge 
+
   ---
   ## License
   

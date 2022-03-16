@@ -48,13 +48,21 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.`
 
-let lscChoice = (answers) => {
+let liscTXT = ''
+let liscIMG = ''
+
+function liscChoice(answers) {
   if (answers.license === 'MIT'){
-    lscChoice = liscMIT}
+    liscTXT = liscMIT.toString
+    liscIMG = 'MIT-yellowgreen'
+  }
   else if (answers.license === 'Apache'){
-    lscChoice = liscApache}
+    liscTXT = liscApache.toString
+    liscIMG = 'Apache-brightgreen'
+  }
   else if (answers.liscence === "GNUv3"){
-    lscChoice = liscGNU
+    liscTXT = liscGNU.toString
+    liscIMG = 'GNUv3-green'
   }
 };
 
@@ -118,12 +126,16 @@ const promptUser = () => {
 
 // This is the readme layout below using the answers from the inquirer as variables.
 
-const generateReadme = ({ name, title, description, installation, usage, contribution, test, github, email }) =>
-  `# ${title}
+function generateReadme(answers) {
+  liscChoice(answers)
+
+  return `# ${answers.title}
   
+  ![](https://img.shields.io/badge/License-${liscIMG})
+
   ## Description
   
-  ${description}
+  ${answers.description}
 
   ---
   ## Table of Contents 
@@ -137,41 +149,42 @@ const generateReadme = ({ name, title, description, installation, usage, contrib
 
   ---
   ## Installation
-  ${installation}
+  ${answers.installation}
 
   ---
   ## Usage
-  ${usage}
+  ${answers.usage}
 
 
   ---
   ## Contributions
-  ${contribution}
+  ${answers.contribution}
 
   ---
   ## Test
-  ${test}
+  ${answers.test}
 
   ---
   ## Questions 
 
-  Please send any questions by email to ${email}.
-  Github https://github.com/${github}.
+  Please send any questions by email to ${answers.email}.
+  Github https://github.com/${answers.github}.
 
   ---
   ## License
   
-  Copyright (C) ${thisyear}  ${name}
+  Copyright (C) ${thisyear}  ${answers.name}
 
-  ${liscMIT}
+  ${liscTXT}
   
 `;
+}
 
 // This is the application initialization where the user is asked a series of questions then it is written via the generateReadme which uses the answers to generate readme.
 const init = () => {
   promptUser()
-    .then((answers) => fs.writeFileSync('./Generated-Readme/readme.md', generateReadme(answers)))
-    .then(() => console.log('Successfully wrote to /Generated-Readme/readme.md'))
+    .then((answers) => fs.writeFileSync(`./${answers.title}-readme.md`, generateReadme(answers)))
+    .then(() => console.log('Successfully created your readme'))
     .catch((err) => console.error(err));
 };
 
