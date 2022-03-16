@@ -1,5 +1,7 @@
 # Complete Readme Generator
   
+  ![](https://img.shields.io/badge/License-MIT-yellowgreen)
+  
   ## Description
   
   This app was created to generate high quality readme markdown files. It is useful as a quick way to generate a complete readme quickly or to use as a starting point without having to create a readme and its sections from scratch.
